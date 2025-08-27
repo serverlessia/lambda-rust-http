@@ -63,7 +63,11 @@ jobs:
 
       - name: Install cargo-lambda
         run: |
-          cargo install cargo-lambda
+          if ! command -v cargo-lambda &> /dev/null; then
+            cargo install cargo-lambda
+          else
+            echo "✅ cargo-lambda already installed"
+          fi
 
       - name: Run clippy
         run: |
@@ -133,7 +137,11 @@ jobs:
 
       - name: Install cargo-lambda
         run: |
-          cargo install cargo-lambda
+          if ! command -v cargo-lambda &> /dev/null; then
+            cargo install cargo-lambda
+          else
+            echo "✅ cargo-lambda already installed"
+          fi
 
       - name: Build Lambda function
         run: |
